@@ -53,3 +53,5 @@ esperar_imagem_aparecer('bwaLogo.png')
 time.sleep(1)
 clicar_imagem_se_encontrada('notifBitrix0.png')
 clicar_imagem_se_encontrada('notifBitrix.png')
+
+
