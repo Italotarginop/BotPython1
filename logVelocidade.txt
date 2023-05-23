@@ -3,3 +3,8 @@ DOWNLOAD Mbps
 UPLOAD Mbps
 25.03
 
+DOWNLOAD Mbps
+23.38
+UPLOAD Mbps
+20.71
+

@@ -1,21 +1,15 @@
 import time
 import pyperclip
-import pyautogui
 from Xpath import xpath
 
+from Function import pesquisar_programa
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-def pesquisar_programa(nome_programa):
-    pyautogui.press('win')
-    time.sleep(0.5)  # Pequena pausa para garantir que o menu Iniciar esteja aberto
-    pyautogui.write(nome_programa)
-    time.sleep(0.5)  # Pequena pausa para garantir que o texto tenha sido digitado
-    pyautogui.press('enter')
-
+pesquisar_programa('spot')
 # Instalação e configuração do WebDriver para o Chrome
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
@@ -37,50 +31,3 @@ texto = elemento.text
 # textoLog 
 with open("logVelocidade.txt", "a+") as arquivo_log:
     arquivo_log.write(f'{texto}\n\n')
-'''
-pyperclip.copy(texto)
-driver.quit()
-
-pyautogui.press('win')
-time.sleep(0.5)
-pyautogui.write('bloco')
-time.sleep(1)
-pyautogui.press('enter')
-time.sleep(1)
-pyautogui.keyDown('ctrl')
-pyautogui.press('v')
-pyautogui.keyUp('ctrl')
-'''
-
-
-'''from selenium import webdriver
-from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
-
-# Instalação e configuração do WebDriver para o Chrome
-driver = webdriver.Chrome(ChromeDriverManager().install())
-
-# Acessar o site
-driver.get("https://www.exemplo.com")
-
-# Procurar um elemento por ID
-elemento_id = driver.find_element(By.ID, "id_do_elemento")
-
-# Procurar um elemento por classe
-elemento_classe = driver.find_element(By.CLASS_NAME, "nome_da_classe")
-
-# Procurar um elemento por XPath
-elemento_xpath = driver.find_element(By.XPATH, "//div[@id='exemplo']")
-
-# Procurar um elemento por seletor CSS
-elemento_css = driver.find_element(By.CSS_SELECTOR, "h1.titulo")
-
-# Procurar um elemento por link de texto
-elemento_link_text = driver.find_element(By.LINK_TEXT, "Texto do link")
-
-# Procurar um elemento por parte do link de texto
-elemento_partial_link_text = driver.find_element(By.PARTIAL_LINK_TEXT, "Parcial do texto do link")
-
-# Fechar o navegador
-driver.quit()
-'''

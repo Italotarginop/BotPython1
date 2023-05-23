@@ -1,42 +1,25 @@
-import pyautogui as batata
 import time
-import keyboard
+import pyautogui as batata
+from FunctionTarefas import clicar_imagem_se_encontrada, escrever, esperar_imagem_aparecer, escrever_tarefa
 
-def esperar_imagem_aparecer(nome_imagem,timeout=10):
-    while True:
-        if (not timeout):
-            return False
-        image_location = batata.locateOnScreen(nome_imagem, confidence=0.99)
-        if image_location is not None:
-           return image_location
-        time.sleep(1)
-        timeout = timeout - 1
-        
+class Notepad: 
+    def __init__(self):
+        self.arquivo = ""
+        self.texto = ""
+    def set_arquivo(self, arquivo):
+        self.arquivo=arquivo
+    def set_texto(self, texto):
+        self.texto=texto
+    def escrever_tarefa(self, arquivo, texto):
+        self.set_arquivo(arquivo)
+        self.set_texto(texto)
+        with open(self.arquivo , "a+") as arquivo_log:
+            arquivo_log.write(f'{self.texto}')
 
-def clicar_imagem_se_encontrada(nome_imagem,timeout=10):
-    try:
-        image_location = esperar_imagem_aparecer(nome_imagem,timeout)
-        time.sleep(0.5)
-        batata.click(image_location)
-    except:
-        print(nome_imagem)
+Notepad().escrever_tarefa("arquivo.txt","pergunta")
 
-def escrever(texto, presses=1):
-    keyboard.write(texto, delay=0.01)
-    for x in range(presses):
-        keyboard.press_and_release('enter')
 
-def escrever_tarefa():
-    escrever('Titulo da tarefa: ')
-    escrever(r' Descrição')
-    escrever('- ',0)
-    batata.keyDown('ctrl')
-    batata.press('v')
-    batata.keyUp('ctrl')
-    batata.press('enter', presses=2)
-    escrever('De: ')
-    escrever('Fonte: ',presses=2)
-
+'''
 clicar_imagem_se_encontrada('win.png')
 time.sleep(1)
 clicar_imagem_se_encontrada('not.png')
@@ -55,3 +38,4 @@ clicar_imagem_se_encontrada('notifBitrix0.png')
 clicar_imagem_se_encontrada('notifBitrix.png')
 
 
+'''
