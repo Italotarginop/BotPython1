@@ -1,0 +1,2 @@
+<built-in function get_clock_info><built-in function get_clock_info>2023-05-25 13:49:28.950343
+2023-05-25 13:50:10.044523

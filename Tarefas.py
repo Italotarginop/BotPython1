@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 import pyautogui as batata
 from FunctionTarefas import clicar_imagem_se_encontrada, escrever, esperar_imagem_aparecer, escrever_tarefa
 
@@ -16,7 +17,10 @@ class Notepad:
         with open(self.arquivo , "a+") as arquivo_log:
             arquivo_log.write(f'{self.texto}')
 
-Notepad().escrever_tarefa("arquivo.txt","pergunta")
+data_atual = datetime.now()
+
+Notepad().escrever_tarefa("data de hoje1.txt","pergunta")
+Notepad().escrever_tarefa("novoteste1.txt" , data_atual)
 
 
 '''
