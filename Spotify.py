@@ -41,12 +41,15 @@ class Spotify:
         time.sleep(2)
     
     def apagar_playlist_enquanto_ouver(self):
+        self.abrir_spotify()
         while True:
+            time.sleep(2)
             if not esperar_imagem_aparecer('cliquedireitoplay.png', 10):
+                print ('qualquer coisa')
                 break
-        clicar_direito_se_encontrada('cliquedireitoplay.png', 10)
-        clicar_imagem_se_encontrada('apagar.png',10)
-        clicar_imagem_se_encontrada('apagaresquerdo.png',10)
+            clicar_direito_se_encontrada('cliquedireitoplay.png', 2)
+            clicar_imagem_se_encontrada('apagar.png', 2)
+            clicar_imagem_se_encontrada('apagaresquerdo.png', 2)
 
     def criar_playlist(self):
                 
@@ -56,29 +59,35 @@ class Spotify:
         
         for musica in self.musicas:
             time.sleep(1)
-            clicar_imagem_se_encontrada('buscarArtistaMusica.png')
+            clicar_imagem_se_encontrada('buscarArtistaMusica.png', 1)
             pesquisar_musica(musica['artista'], musica['musica'])
-            clicar_imagem_se_encontrada('incrementar.png', 5)
+            clicar_imagem_se_encontrada('incrementar.png', 2)
+            pyautogui.press('down', presses=2)
+            time.sleep(1)
+            clicar_imagem_se_encontrada('addmusspt.png', 2)
+            time.sleep(1)
+            clicar_imagem_se_encontrada('fecharpesqposadd.png',1)
+            time.sleep(1)
+            clicar_imagem_se_encontrada('incrementar.png', 2)
             time.sleep(1)
             pyautogui.press('down', presses=2)
             time.sleep(1)
-            esperar_imagem_aparecer('addmusspt.png', 5)
-            pyautogui.press('down', presses=2)
-            clicar_imagem_se_encontrada('fecharpesqposadd.png')
-            clicar_imagem_se_encontrada('addmusspt.png', 5)
-            clicar_imagem_se_encontrada('fecharpesqposadd.png')
+            clicar_imagem_se_encontrada('fecharpesqposadd.png',1)
+            '''
+            clicar_imagem_se_encontrada('buscarArtistaMusica.png')
+            clicar_imagem_se_encontrada('addmusspt.png', 2)
+            clicar_imagem_se_encontrada('fecharpesqposadd.png')'''
             
-Spotify().apagar_playlist_enquanto_ouver()
-
-        
+            
 
 
+# Spotify().criar_playlist()
 
-# --------------------------------------------------
-
-Spotify().criar_playlist()
 # Spotify().apagar_playlist_enquanto_ouver()
-
+# --------------------------------------------------
+'''
+Spotify().criar_playlist()
+Spotify().apagar_playlist_enquanto_ouver()'''
 
 '''# Add/Nomear playlist - tranformar em função
 clicar_imagem_se_encontrada('addspt.png', 10)
@@ -99,15 +108,5 @@ spotify = Spotify()
 
 
    
-# Apagar Playlists enquanto ouver.
-'''
-while True:
-    if not esperar_imagem_aparecer('cliquedireitoplay.png', 10):
-        break
-    clicar_direito_se_encontrada('cliquedireitoplay.png', 10)
-    clicar_imagem_se_encontrada('apagar.png',10)
-    clicar_imagem_se_encontrada('apagaresquerdo.png',10)
-
-'''
 
 
